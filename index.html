@@ -384,6 +384,7 @@
     inset: 0;
     background: rgba(200,169,110,0);
     transition: background 0.4s ease;
+    pointer-events: none;
   }
 
   .gallery-item:hover::after {
@@ -1811,10 +1812,12 @@
     document.body.style.overflow = '';
   }
 
-  document.querySelectorAll('.gallery-img-real').forEach(img => {
-    img.addEventListener('click', function() {
+  document.querySelectorAll('.gallery-item').forEach(item => {
+    item.addEventListener('click', function() {
       if (window.innerWidth <= 600) return;
-      lightboxImg.src = this.src;
+      const img = this.querySelector('.gallery-img-real');
+      if (!img) return;
+      lightboxImg.src = img.src;
       lightbox.classList.add('open');
       document.body.style.overflow = 'hidden';
     });
