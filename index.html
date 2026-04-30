@@ -619,9 +619,10 @@
   .case-study-screen {
     position: relative;
     background: #0a0908;
-    border: 1px solid rgba(200,169,110,0.1);
+    border: 1px solid rgba(200,169,110,0.15);
     overflow: hidden;
     margin-bottom: 3rem;
+    box-shadow: 0 40px 80px rgba(0,0,0,0.6), 0 0 0 1px rgba(200,169,110,0.08);
   }
 
   .browser-bar {
@@ -1330,11 +1331,8 @@
         </div>
         <div class="browser-url">poetonic.com</div>
       </div>
-      <div class="screen-content">
-        <div class="screen-placeholder">
-          <div class="big-p">Poetonic</div>
-          <p class="site-label">Live site — add screenshot here</p>
-        </div>
+      <div class="screen-content" style="aspect-ratio: auto; padding: 0;">
+        <img src="media/website.jpg" alt="Poetonic.com" style="width: 100%; display: block;">
       </div>
       <div class="screen-caption">
         <span>poetonic.com</span>
