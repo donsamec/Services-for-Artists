@@ -3,135 +3,309 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Don Samec | Visual Communication for Artists</title>
+    <title>Don Samec — Visual Communication for Artists</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
+    <div class="grain"></div>
+
     <nav>
         <div class="nav-container">
-            <a href="#hero" class="logo">Don Samec</a>
+            <a href="#hero" class="logo">
+                <span class="logo-name">Don Samec</span>
+                <span class="logo-sub">Visual Communication</span>
+            </a>
             <div class="nav-links">
-                <a href="#what-i-do">What I Do</a>
+                <a href="#what-i-do">Work</a>
                 <a href="#services">Services</a>
                 <a href="#pricing">Pricing</a>
                 <a href="#about">About</a>
-                <a href="#contact">Contact</a>
+                <a href="#contact" class="nav-cta">Get in Touch</a>
             </div>
+            <button class="nav-toggle" aria-label="Menu">
+                <span></span><span></span>
+            </button>
         </div>
     </nav>
 
     <section id="hero" class="hero-section">
-        <div class="container">
-            <h1>Visual Communication for Artists</h1>
-            <p class="tagline">"I help artists show their work properly once they know what they want to say."</p>
-            <a href="#contact" class="cta-button">Request a Quote</a>
+        <div class="hero-eyebrow">
+            <span class="mono">Cork, Ireland — Available Worldwide</span>
+        </div>
+        <div class="hero-main">
+            <h1>
+                <span class="h1-line">Visual</span>
+                <span class="h1-line italic">Communication</span>
+                <span class="h1-line">for Artists</span>
+            </h1>
+        </div>
+        <div class="hero-footer">
+            <p class="tagline">"I help artists show their work properly<br>once they know what they want to say."</p>
+            <a href="#contact" class="cta-button">
+                <span>Request a Quote</span>
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+        </div>
+        <div class="hero-scroll-hint">
+            <span class="mono">Scroll</span>
+            <div class="scroll-line"></div>
         </div>
     </section>
 
-    <section id="what-i-do" class="section">
+    <section id="what-i-do" class="section intro-section">
         <div class="container">
-            <h2>What I Do</h2>
-            <div class="text-block">
-                <p>I help other artists with their visual communication—specifically photography, video, and websites. I can't help you figure out who you are or what you want to say, but once you know that, I provide the technical rigour to ensure you show it properly to the world.</p>
+            <div class="section-label">
+                <span class="mono label-text">01 — What I Do</span>
+            </div>
+            <div class="intro-layout">
+                <div class="intro-statement">
+                    <p>I help other artists with their visual communication — photography, video, and websites.</p>
+                </div>
+                <div class="intro-detail">
+                    <p>I can't help you figure out who you are or what you want to say. But once you know that, I provide the technical rigour to ensure you show it properly to the world. No padding. No noise. Just the work.</p>
+                </div>
             </div>
         </div>
     </section>
 
-    <section id="services" class="section">
+    <section id="services" class="section services-section">
         <div class="container">
-            <h2>Services</h2>
-            
-            <div class="services-grid">
-                
-                <div class="service-card">
-                    <div class="asset-container gallery-grid">
-                        <img src="media/photo1.jpg" alt="Artwork Documentation 1" class="gallery-thumb">
-                        <img src="media/photo2.jpg" alt="Artwork Documentation 2" class="gallery-thumb">
-                        <img src="media/photo3.jpg" alt="Artwork Documentation 3" class="gallery-thumb">
-                        <img src="media/photo4.jpg" alt="Artwork Documentation 4" class="gallery-thumb">
-                        <img src="media/photo5.jpg" alt="Exhibition View 1" class="gallery-thumb">
-                        <img src="media/photo6.jpg" alt="Exhibition View 2" class="gallery-thumb">
-                        <img src="media/photo7.jpg" alt="Gallery Setting 1" class="gallery-thumb">
-                        <img src="media/photo8.jpg" alt="Gallery Setting 2" class="gallery-thumb">
-                    </div>
-                    <h3>Photography</h3>
-                    <p>I provide high-fidelity digitization of physical artworks, capturing the fine textures and color accuracy essential for professional archives and high-end reproduction. With over 1,000 works documented, my process ensures that the transition from physical medium to digital file preserves the integrity of your original vision. Beyond studio documentation, I also provide professional coverage for artworks displayed in exhibition or gallery settings, delivering files ready for catalogs, digital portfolios, or to make your own professional prints.</p>
-                </div>
+            <div class="section-label">
+                <span class="mono label-text">02 — Services</span>
+            </div>
 
-                <div class="service-card">
-                    <div class="asset-container">
-                        <video controls poster="media/video-poster.jpg" width="100%">
+            <div class="service-block">
+                <div class="service-number mono">01</div>
+                <div class="service-content">
+                    <div class="asset-container gallery-grid">
+                        <img src="media/photo1.jpg" alt="Artwork Documentation" class="gallery-thumb">
+                        <img src="media/photo2.jpg" alt="Artwork Documentation" class="gallery-thumb">
+                        <img src="media/photo3.jpg" alt="Artwork Documentation" class="gallery-thumb">
+                        <img src="media/photo4.jpg" alt="Artwork Documentation" class="gallery-thumb">
+                        <img src="media/photo5.jpg" alt="Exhibition View" class="gallery-thumb">
+                        <img src="media/photo6.jpg" alt="Exhibition View" class="gallery-thumb">
+                        <img src="media/photo7.jpg" alt="Gallery Setting" class="gallery-thumb">
+                        <img src="media/photo8.jpg" alt="Gallery Setting" class="gallery-thumb">
+                    </div>
+                    <div class="service-text">
+                        <h3>Photography</h3>
+                        <p>High-fidelity digitization of physical artworks — textures, color accuracy, archive-ready files. Over 1,000 works documented. Studio documentation and exhibition coverage, delivering files ready for catalogs, digital portfolios, or professional print.</p>
+                        <div class="service-tags">
+                            <span class="mono tag">Artwork Documentation</span>
+                            <span class="mono tag">Exhibition Coverage</span>
+                            <span class="mono tag">Archive Files</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="service-divider"></div>
+
+            <div class="service-block">
+                <div class="service-number mono">02</div>
+                <div class="service-content">
+                    <div class="asset-container video-container">
+                        <video controls poster="media/video-poster.jpg">
                             <source src="media/artist-demo.mp4" type="video/mp4">
-                            Your browser does not support the video tag.
                         </video>
                     </div>
-                    <h3>Video Production</h3>
-                    <p>I craft short-format visual stories that bridge the gap between the artist's studio and the public eye through mini-documentaries, demos, and high-impact reels. My background in cinematography allows me to frame your creative process with a narrative depth that standard documentation often misses. These videos are designed to be "hero" content—capturing the movement, sound, and atmosphere of your practice to engage viewers instantly.</p>
-                </div>
-
-                <div class="service-card">
-                    <div class="asset-container">
-                        <img src="media/poetonic-screenshot.jpg" alt="Poetonic.com Website Screenshot" class="featured-img">
+                    <div class="service-text">
+                        <h3>Video Production</h3>
+                        <p>Short-format visual stories that bridge studio and public. Mini-documentaries, demos, high-impact reels. An MA in Cinematography means narrative depth that standard documentation misses. These are hero assets built to capture the movement, sound, and atmosphere of your practice.</p>
+                        <div class="service-tags">
+                            <span class="mono tag">Mini-Documentaries</span>
+                            <span class="mono tag">Artist Reels</span>
+                            <span class="mono tag">Studio Films</span>
+                        </div>
                     </div>
-                    <h3>Websites</h3>
-                    <p>I build specialized artist platforms using a professional-grade stack that eliminates recurring platform fees and puts total ownership back into your hands. Leveraging the same architecture as poetonic.com, these sites are designed to be fast, secure, and effortlessly manageable through a custom-tailored interface. The result is a sophisticated online home where your work, your shop, and your story live permanently without the burden of monthly subscriptions.</p>
                 </div>
-
             </div>
+
+            <div class="service-divider"></div>
+
+            <div class="service-block">
+                <div class="service-number mono">03</div>
+                <div class="service-content">
+                    <div class="asset-container">
+                        <img src="media/poetonic-screenshot.jpg" alt="Poetonic.com" class="featured-img">
+                    </div>
+                    <div class="service-text">
+                        <h3>Websites</h3>
+                        <p>Specialized artist platforms built on professional-grade architecture. No recurring fees. No platform lock-in. You own everything. Fast, secure, and manageable through a custom interface — a permanent home for your work, shop, and story.</p>
+                        <div class="service-tags">
+                            <span class="mono tag">Portfolio Sites</span>
+                            <span class="mono tag">E-commerce</span>
+                            <span class="mono tag">Full Ownership</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </section>
 
-    <section id="pricing" class="section bg-light">
+    <section id="pricing" class="section pricing-section">
         <div class="container">
-            <h2>Website Tiers</h2>
-            <div class="pricing-intro">
-                <p>Three tiers. One-time cost. You own everything. No monthly subscriptions. No platform fees.</p>
+            <div class="section-label">
+                <span class="mono label-text">03 — Website Tiers</span>
+            </div>
+            <div class="pricing-statement">
+                <p>Three tiers. One-time cost. You own everything.</p>
+                <p class="pricing-sub mono">No monthly subscriptions. No platform fees.</p>
             </div>
             <div class="pricing-grid">
                 <div class="price-tier">
-                    <h4>Tier 1: Static Presence</h4>
-                    <p class="price">€290 - €349</p>
-                    <p>Your work looks serious from day one. Best for fixed portfolios.</p>
+                    <div class="tier-top">
+                        <span class="mono tier-num">T1</span>
+                        <h4>Static Presence</h4>
+                    </div>
+                    <div class="price-display">
+                        <span class="price">€290</span>
+                        <span class="price-range mono">– €349</span>
+                    </div>
+                    <p>Your work looks serious from day one. Best for fixed portfolios that don't need updating.</p>
+                    <ul class="tier-list mono">
+                        <li>Custom-designed pages</li>
+                        <li>Hosted & deployed</li>
+                        <li>Contact integration</li>
+                        <li>Full handoff</li>
+                    </ul>
+                </div>
+                <div class="price-tier price-tier--featured">
+                    <div class="tier-badge mono">Most Popular</div>
+                    <div class="tier-top">
+                        <span class="mono tier-num">T2</span>
+                        <h4>Editable CMS</h4>
+                    </div>
+                    <div class="price-display">
+                        <span class="price">€690</span>
+                        <span class="price-range mono">– €790</span>
+                    </div>
+                    <p>Update your work and prices yourself with zero code required.</p>
+                    <ul class="tier-list mono">
+                        <li>Everything in T1</li>
+                        <li>Content management system</li>
+                        <li>Shop-ready</li>
+                        <li>Training included</li>
+                    </ul>
                 </div>
                 <div class="price-tier">
-                    <h4>Tier 2: Editable CMS</h4>
-                    <p class="price">€690 - €790</p>
-                    <p>Update your work and prices yourself with no code required.</p>
-                </div>
-                <div class="price-tier">
-                    <h4>Tier 3: Full Platform</h4>
-                    <p class="price">€1,490</p>
-                    <p>Full E-commerce, Mailing list, and integrated Video/Photo session.</p>
+                    <div class="tier-top">
+                        <span class="mono tier-num">T3</span>
+                        <h4>Full Platform</h4>
+                    </div>
+                    <div class="price-display">
+                        <span class="price">€1,490</span>
+                    </div>
+                    <p>Full e-commerce, mailing list, and integrated video/photo session.</p>
+                    <ul class="tier-list mono">
+                        <li>Everything in T2</li>
+                        <li>E-commerce + payments</li>
+                        <li>Mailing list integration</li>
+                        <li>Photo/video session</li>
+                    </ul>
                 </div>
             </div>
-            
             <div class="download-container">
-                <p>For a detailed breakdown of pricing and my build process:</p>
-                <a href="DonSamec_WebServices_Guide.pdf" class="download-btn" download>Download Pricing & Workflow Guide (PDF)</a>
+                <a href="DonSamec_WebServices_Guide.pdf" class="download-btn" download>
+                    <span>Download Pricing & Workflow Guide</span>
+                    <span class="mono">PDF ↓</span>
+                </a>
             </div>
         </div>
     </section>
 
-    <section id="about" class="section">
+    <section id="about" class="section about-section">
         <div class="container">
-            <h2>About Don Samec</h2>
-            <div class="about-content">
-                <p>Don Samec is a California-born French mixed-media artist, photographer, and creative producer based in Cork, Ireland. With an MA in Cinematography from E.S.E.C. Paris and over a decade of international experience, he brings technical fluency to artistic practice. Having documented over 1,000 artworks and exhibited globally, he understands the visual rigour required to represent an artist’s work in the contemporary era.</p>
+            <div class="section-label">
+                <span class="mono label-text">04 — About</span>
+            </div>
+            <div class="about-layout">
+                <div class="about-portrait">
+                    <div class="portrait-placeholder">
+                        <span class="mono">DS</span>
+                    </div>
+                </div>
+                <div class="about-text">
+                    <p class="about-lead">Don Samec is a California-born French mixed-media artist, photographer, and creative producer based in Cork, Ireland.</p>
+                    <p>With an MA in Cinematography from E.S.E.C. Paris and over a decade of international experience, he brings technical fluency to artistic practice. Having documented over 1,000 artworks and exhibited globally, he understands the visual rigour required to represent an artist's work in the contemporary era.</p>
+                    <div class="about-stats">
+                        <div class="stat">
+                            <span class="stat-num">1,000+</span>
+                            <span class="mono stat-label">Works Documented</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-num">10+</span>
+                            <span class="mono stat-label">Years Experience</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-num">MA</span>
+                            <span class="mono stat-label">Cinematography, Paris</span>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
     <section id="contact" class="section contact-section">
         <div class="container">
-            <h2>Ready to amplify your visual presence?</h2>
-            <p>Based in Cork, Ireland. Available for international projects.</p>
-            <a href="mailto:don.samec@gmail.com?subject=Request a Quote" class="request-button">Request a Quote</a>
-            <div class="footer-info">
-                <p>don.samec@gmail.com</p>
+            <div class="contact-inner">
+                <div class="contact-statement">
+                    <h2>Ready to show<br><em>your work properly?</em></h2>
+                    <p class="mono contact-location">Cork, Ireland — Available for international projects</p>
+                </div>
+                <div class="contact-action">
+                    <a href="mailto:don.samec@gmail.com?subject=Request a Quote" class="request-button">
+                        Request a Quote
+                    </a>
+                    <p class="contact-email mono">don.samec@gmail.com</p>
+                </div>
             </div>
         </div>
     </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-inner">
+                <span class="mono footer-copy">© 2026 Don Samec</span>
+                <span class="mono footer-location">Cork, Ireland</span>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Nav scroll behaviour
+        const nav = document.querySelector('nav');
+        window.addEventListener('scroll', () => {
+            nav.classList.toggle('scrolled', window.scrollY > 60);
+        });
+
+        // Staggered reveal on scroll
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('in-view');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.service-block, .price-tier, .intro-layout, .about-layout, .contact-inner').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Mobile nav toggle
+        const toggle = document.querySelector('.nav-toggle');
+        const navLinks = document.querySelector('.nav-links');
+        toggle?.addEventListener('click', () => {
+            navLinks.classList.toggle('open');
+            toggle.classList.toggle('active');
+        });
+    </script>
 
 </body>
 </html>
