@@ -1,0 +1,59 @@
+/* General Reset */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { 
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
+    line-height: 1.6; 
+    color: #1a1a1a; 
+    background-color: #ffffff; 
+}
+
+.container { max-width: 1100px; margin: 0 auto; padding: 0 2rem; }
+section { padding: 5rem 0; border-bottom: 1px solid #eee; }
+
+/* Navigation */
+nav { 
+    position: fixed; top: 0; width: 100%; background: rgba(255,255,255,0.95); 
+    z-index: 1000; border-bottom: 1px solid #eee; padding: 1rem 0; 
+}
+.nav-container { display: flex; justify-content: space-between; align-items: center; max-width: 1100px; margin: 0 auto; padding: 0 2rem; }
+.logo { font-weight: bold; text-decoration: none; color: #000; font-size: 1.2rem; }
+.nav-links a { text-decoration: none; color: #666; margin-left: 1.5rem; font-size: 0.9rem; transition: color 0.3s; }
+.nav-links a:hover { color: #000; }
+
+/* Hero */
+.hero-section { height: 80vh; display: flex; align-items: center; background: #fafafa; border-bottom: none; }
+h1 { font-size: 3.5rem; line-height: 1.1; margin-bottom: 1.5rem; letter-spacing: -1px; }
+.tagline { font-size: 1.5rem; color: #555; margin-bottom: 2rem; max-width: 600px; font-style: italic; }
+
+/* Services & Gallery */
+.services-grid { display: grid; gap: 4rem; margin-top: 3rem; }
+.service-card h3 { font-size: 1.8rem; margin-bottom: 1rem; }
+.asset-container { margin-bottom: 1.5rem; border-radius: 8px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
+.featured-img, video { width: 100%; display: block; }
+
+.gallery-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+.gallery-thumb { width: 100%; height: 180px; object-fit: cover; transition: opacity 0.3s; }
+.gallery-thumb:hover { opacity: 0.8; }
+
+/* Pricing */
+.bg-light { background-color: #f9f9f9; }
+.pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; margin: 3rem 0; }
+.price-tier { background: #fff; padding: 2rem; border: 1px solid #eee; border-radius: 8px; }
+.price { font-size: 1.5rem; font-weight: bold; margin: 1rem 0; color: #000; }
+
+/* Buttons */
+.cta-button, .request-button, .download-btn {
+    display: inline-block; background: #000; color: #fff; padding: 1rem 2rem; 
+    text-decoration: none; border-radius: 4px; font-weight: 500; transition: transform 0.2s;
+}
+.cta-button:hover, .request-button:hover { transform: translateY(-2px); }
+.download-container { text-align: center; margin-top: 3rem; padding-top: 2rem; border-top: 1px solid #ddd; }
+
+/* Mobile */
+@media (max-width: 768px) {
+    h1 { font-size: 2.5rem; }
+    .nav-links { display: none; } /* Simplified for now */
+    .pricing-grid { grid-template-columns: 1fr; }
+    .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+}
