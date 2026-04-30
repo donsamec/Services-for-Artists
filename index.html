@@ -6,7 +6,7 @@
 <title>Don Samec — Visual Communication for Artists</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Syne:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Crimson+Pro:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300;1,9..144,400&family=DM+Sans:wght@300;400;500&family=Spectral:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Syne:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -20,8 +20,73 @@
     --accent-deep: #9c7d44;
     --white: #ffffff;
     --line: rgba(0,0,0,0.1);
-    --font-display: 'Cormorant Garamond', Georgia, serif;
+    --font-display: 'Bebas Neue', sans-serif;
+    --font-ui: 'Crimson Pro', Georgia, serif;
+  }
+
+  /* Font scheme overrides */
+  body.scheme-b {
+    --font-display: 'Fraunces', Georgia, serif;
+    --font-ui: 'DM Sans', sans-serif;
+  }
+  body.scheme-c {
+    --font-display: 'Spectral', Georgia, serif;
     --font-ui: 'Syne', sans-serif;
+  }
+
+  /* Bebas needs tracking adjustment for display */
+  body.scheme-a .hero-title,
+  body.scheme-a .section-title,
+  body.scheme-a .about-text p.lead,
+  body.scheme-a .contact-left h2,
+  body.scheme-a .case-study h3,
+  body.scheme-a .pricing-price,
+  body.scheme-a .ownership-left h4 {
+    letter-spacing: 0.04em;
+    font-weight: 400;
+  }
+
+  /* Font switcher */
+  .font-switcher {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    z-index: 200;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    background: rgba(14,13,12,0.92);
+    border: 1px solid rgba(200,169,110,0.2);
+    padding: 1rem 1.25rem;
+  }
+
+  .font-switcher-label {
+    font-family: 'Syne', sans-serif;
+    font-size: 0.55rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(200,169,110,0.5);
+    margin-bottom: 0.25rem;
+  }
+
+  .font-btn {
+    font-family: 'Syne', sans-serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.08em;
+    color: rgba(245,242,236,0.5);
+    background: none;
+    border: none;
+    cursor: pointer;
+    text-align: left;
+    padding: 0.3rem 0;
+    border-bottom: 1px solid transparent;
+    transition: all 0.2s;
+  }
+
+  .font-btn:hover { color: var(--paper); }
+  .font-btn.active {
+    color: var(--accent);
+    border-bottom-color: rgba(200,169,110,0.3);
   }
 
   html { scroll-behavior: smooth; }
@@ -1507,6 +1572,24 @@
     <a href="https://poetonic.com" target="_blank">Poetonic</a>
   </div>
 </footer>
+
+<!-- Font Switcher -->
+<div class="font-switcher">
+  <p class="font-switcher-label">Typography</p>
+  <button class="font-btn active" onclick="setScheme('a', this)">A — Bebas Neue / Crimson Pro</button>
+  <button class="font-btn" onclick="setScheme('b', this)">B — Fraunces / DM Sans</button>
+  <button class="font-btn" onclick="setScheme('c', this)">C — Spectral / Syne</button>
+</div>
+
+<script>
+  document.body.classList.add('scheme-a');
+  function setScheme(s, btn) {
+    document.body.className = document.body.className.replace(/scheme-[a-z]/g, '');
+    document.body.classList.add('scheme-' + s);
+    document.querySelectorAll('.font-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+  }
+</script>
 
 </body>
 </html>
