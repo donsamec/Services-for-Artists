@@ -1,70 +1,137 @@
-<nav>
-    <div class="nav-container">
-        <a href="#hero" class="logo">Don Samec</a>
-        <div class="nav-links">
-            <a href="#what-i-do">What I Do</a>
-            <a href="#services">Services</a>
-            <a href="#pricing">Pricing</a>
-            <a href="#about">About</a>
-            <a href="#contact">Contact</a>
-        </div>
-    </div>
-</nav>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Don Samec | Visual Communication for Artists</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
 
-<section id="services">
-    <h2>Services</h2>
-    <div class="services-grid">
-        <div class="service-card">
-            <div class="asset-placeholder">
-                <img src="photography-sample.jpg" alt="Artwork Digitization Example">
+    <nav>
+        <div class="nav-container">
+            <a href="#hero" class="logo">Don Samec</a>
+            <div class="nav-links">
+                <a href="#what-i-do">What I Do</a>
+                <a href="#services">Services</a>
+                <a href="#pricing">Pricing</a>
+                <a href="#about">About</a>
+                <a href="#contact">Contact</a>
             </div>
-            <h3>Photography</h3>
-            <p>Digitization of physical artworks for content, documentation, printmaking, or artist catalogues[cite: 9, 154].</p>
         </div>
+    </nav>
 
-        <div class="service-card">
-            <div class="asset-placeholder">
-                <video controls width="100%">
-                    <source src="artist-demo.mp4" type="video/mp4">
-                    Your browser does not support the video tag.
-                </video>
+    <section id="hero" class="hero-section">
+        <div class="container">
+            <h1>Visual Communication for Artists</h1>
+            <p class="tagline">"I help artists show their work properly once they know what they want to say."</p>
+            <a href="#contact" class="cta-button">Request a Quote</a>
+        </div>
+    </section>
+
+    <section id="what-i-do" class="section">
+        <div class="container">
+            <h2>What I Do</h2>
+            <div class="text-block">
+                <p>I help other artists with their visual communication—specifically photography, video, and websites. I can't help you figure out who you are or what you want to say, but once you know that, I provide the technical rigour to ensure you show it properly to the world.</p>
             </div>
-            <h3>Video Production</h3>
-            <p>Short format: mini docs, artist demos, hero videos, and reels[cite: 11, 154].</p>
         </div>
+    </section>
 
-        <div class="service-card">
-            <div class="asset-placeholder">
-                <img src="poetonic-screenshot.jpg" alt="Poetonic.com Website Screenshot">
+    <section id="services" class="section">
+        <div class="container">
+            <h2>Services</h2>
+            
+            <div class="services-grid">
+                
+                <div class="service-card">
+                    <div class="asset-container gallery-grid">
+                        <img src="photo1.jpg" alt="Artwork Documentation 1" class="gallery-thumb">
+                        <img src="photo2.jpg" alt="Artwork Documentation 2" class="gallery-thumb">
+                        <img src="photo3.jpg" alt="Artwork Documentation 3" class="gallery-thumb">
+                        <img src="photo4.jpg" alt="Artwork Documentation 4" class="gallery-thumb">
+                        <img src="photo5.jpg" alt="Exhibition View 1" class="gallery-thumb">
+                        <img src="photo6.jpg" alt="Exhibition View 2" class="gallery-thumb">
+                        <img src="photo7.jpg" alt="Gallery Setting 1" class="gallery-thumb">
+                        <img src="photo8.jpg" alt="Gallery Setting 2" class="gallery-thumb">
+                    </div>
+                    <h3>Photography</h3>
+                    <p>I provide high-fidelity digitization of physical artworks, capturing the fine textures and color accuracy essential for professional archives and high-end reproduction. With over 1,000 works documented, my process ensures that the transition from physical medium to digital file preserves the integrity of your original vision. Beyond studio documentation, I also provide professional coverage for artworks displayed in exhibition or gallery settings, delivering files ready for catalogs, digital portfolios, or to make your own professional prints.</p>
+                </div>
+
+                <div class="service-card">
+                    <div class="asset-container">
+                        <video controls poster="video-poster.jpg" width="100%">
+                            <source src="artist-demo.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                    <h3>Video Production</h3>
+                    <p>I craft short-format visual stories that bridge the gap between the artist's studio and the public eye through mini-documentaries, demos, and high-impact reels. My background in cinematography allows me to frame your creative process with a narrative depth that standard documentation often misses. These videos are designed to be "hero" content—capturing the movement, sound, and atmosphere of your practice to engage viewers instantly.</p>
+                </div>
+
+                <div class="service-card">
+                    <div class="asset-container">
+                        <img src="poetonic-screenshot.jpg" alt="Poetonic.com Website Screenshot" class="featured-img">
+                    </div>
+                    <h3>Websites</h3>
+                    <p>I build specialized artist platforms using a professional-grade stack that eliminates recurring platform fees and puts total ownership back into your hands. Leveraging the same architecture as poetonic.com, these sites are designed to be fast, secure, and effortlessly manageable through a custom-tailored interface. The result is a sophisticated online home where your work, your shop, and your story live permanently without the burden of monthly subscriptions.</p>
+                </div>
+
             </div>
-            <h3>Websites</h3>
-            <p>Portfolio or ecommerce websites with 0 maintenance fees, built on a professional stack (Next.js + Sanity)[cite: 13, 49].</p>
         </div>
-    </div>
-</section>
+    </section>
 
-<section id="pricing">
-    <h2>Website Tiers</h2>
-    <div class="pricing-summary">
-        <p>Three tiers. One-time cost. You own everything[cite: 22].</p>
-        <ul>
-            <li><strong>Tier 1:</strong> €290 - €349 [cite: 29]</li>
-            <li><strong>Tier 2:</strong> €690 - €790 [cite: 45]</li>
-            <li><strong>Tier 3:</strong> €1,490 [cite: 61]</li>
-        </ul>
-        
-        <div class="download-box">
-            <p>For a detailed breakdown of pricing and my build process:</p>
-            <a href="DonSamec_WebServices_Guide.pdf" class="download-button" download>
-                Download Pricing & Workflow Guide (PDF)
-            </a>
+    <section id="pricing" class="section bg-light">
+        <div class="container">
+            <h2>Website Tiers</h2>
+            <div class="pricing-intro">
+                <p>Three tiers. One-time cost. You own everything. No monthly subscriptions. No platform fees.</p>
+            </div>
+            <div class="pricing-grid">
+                <div class="price-tier">
+                    <h4>Tier 1: Static Presence</h4>
+                    <p class="price">€290 - €349</p>
+                    <p>Your work looks serious from day one. Best for fixed portfolios.</p>
+                </div>
+                <div class="price-tier">
+                    <h4>Tier 2: Editable CMS</h4>
+                    <p class="price">€690 - €790</p>
+                    <p>Update your work and prices yourself with no code required.</p>
+                </div>
+                <div class="price-tier">
+                    <h4>Tier 3: Full Platform</h4>
+                    <p class="price">€1,490</p>
+                    <p>Full E-commerce, Mailing list, and integrated Video/Photo session.</p>
+                </div>
+            </div>
+            
+            <div class="download-container">
+                <p>For a detailed breakdown of pricing and my build process:</p>
+                <a href="DonSamec_WebServices_Guide.pdf" class="download-btn" download>Download Pricing & Workflow Guide (PDF)</a>
+            </div>
         </div>
-    </div>
-</section>
+    </section>
 
-<section id="contact" class="cta-section">
-    <h2>Ready to show your work?</h2>
-    <a href="mailto:don.samec@gmail.com?subject=Quote Request" class="request-button">
-        Request a Quote
-    </a>
-</section>
+    <section id="about" class="section">
+        <div class="container">
+            <h2>About Don Samec</h2>
+            <div class="about-content">
+                <p>Don Samec is a California-born French mixed-media artist, photographer, and creative producer based in Cork, Ireland. With an MA in Cinematography from E.S.E.C. Paris and over a decade of international experience, he brings technical fluency to artistic practice. Having documented over 1,000 artworks and exhibited globally, he understands the visual rigour required to represent an artist’s work in the contemporary era.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="section contact-section">
+        <div class="container">
+            <h2>Ready to amplify your visual presence?</h2>
+            <p>Based in Cork, Ireland. Available for international projects.</p>
+            <a href="mailto:don.samec@gmail.com?subject=Request a Quote" class="request-button">Request a Quote</a>
+            <div class="footer-info">
+                <p>don.samec@gmail.com</p>
+            </div>
+        </div>
+    </section>
+
+</body>
+</html>
