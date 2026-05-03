@@ -350,6 +350,110 @@
     font-weight: 400;
   }
 
+  /* ── REELS GRID ──────────────────────────── */
+  .reels-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    border-bottom: 1px solid var(--rule);
+    background: var(--bg);
+    padding: 5rem 6rem;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+
+  .reel-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.75rem;
+    padding: 0 3rem;
+    border-right: 1px solid var(--rule);
+  }
+
+  .reel-item:last-child { border-right: none; }
+
+  .reel-phone {
+    position: relative;
+    width: 100%;
+    max-width: 260px;
+    aspect-ratio: 9/16;
+    background: #e8e6e1;
+    border-radius: 28px;
+    overflow: hidden;
+    box-shadow:
+      0 2px 4px rgba(15,14,13,0.05),
+      0 12px 40px rgba(15,14,13,0.1),
+      inset 0 0 0 1px rgba(15,14,13,0.07);
+    cursor: pointer;
+    transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                box-shadow 0.4s ease;
+  }
+
+  .reel-phone:hover {
+    transform: translateY(-4px);
+    box-shadow:
+      0 4px 8px rgba(15,14,13,0.06),
+      0 20px 60px rgba(15,14,13,0.14),
+      inset 0 0 0 1px rgba(15,14,13,0.07);
+  }
+
+  .reel-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: opacity 0.4s ease;
+  }
+
+  /* play icon — fades out on hover */
+  .reel-play {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(250,249,246,0.15);
+    transition: opacity 0.35s ease;
+    pointer-events: none;
+    z-index: 2;
+  }
+
+  .reel-play svg {
+    width: 40px;
+    height: 40px;
+    fill: none;
+    stroke: rgba(250,249,246,0.9);
+    stroke-width: 1.5;
+    filter: drop-shadow(0 1px 4px rgba(15,14,13,0.3));
+  }
+
+  .reel-phone:hover .reel-play { opacity: 0; }
+
+  /* subtle vignette */
+  .reel-phone::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(to bottom,
+        rgba(15,14,13,0.06) 0%,
+        transparent 25%,
+        transparent 75%,
+        rgba(15,14,13,0.14) 100%);
+    pointer-events: none;
+    border-radius: inherit;
+    z-index: 1;
+  }
+
+  .reel-label {
+    font-family: var(--font-ui);
+    font-size: 0.58rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
   /* ── VIDEO ───────────────────────────────── */
   .video-section-header {
     padding: 8rem 3rem 3rem;
@@ -917,6 +1021,9 @@
     .about-left { position: static; }
     .about-portrait { max-width: 280px; }
     .gallery-masonry { columns: 2; }
+    .reels-grid { padding: 3rem 1.5rem; }
+    .reel-item { padding: 0 1rem; }
+    .reel-phone { max-width: 180px; }
     .case-study-header { grid-template-columns: 1fr; gap: 1.5rem; }
     .case-details { grid-template-columns: 1fr 1fr; }
     .case-features { grid-template-columns: 1fr; }
@@ -989,6 +1096,20 @@
     .about-text p.lead { font-size: 1.15rem; }
 
     .gallery-masonry { columns: 1; }
+
+    /* Mobile: show only first reel, centered */
+    .reels-grid {
+      grid-template-columns: 1fr;
+      padding: 3rem 1.25rem;
+      gap: 0;
+    }
+    .reel-item:nth-child(2),
+    .reel-item:nth-child(3) { display: none; }
+    .reel-item { align-items: center; border-right: none; padding: 0; }
+    .reel-phone { max-width: 260px; }
+
+    /* autoplay on mobile since no hover */
+    .reel-video { }
 
     .video-section-header { padding: 4rem 1.25rem 2rem; }
     .video-type { padding: 1.5rem 1.25rem; }
@@ -1174,38 +1295,60 @@
 </div>
 
 <section id="video" style="padding: 0; max-width: none; border-top: none;">
-  <div class="video-hero">
-    <div style="position: relative; background: var(--rule);" class="reveal-scale">
-      <video autoplay muted loop playsinline style="width: 100%; display: block; aspect-ratio: 16/9; object-fit: cover;">
-        <source src="media/hero.mp4" type="video/mp4">
-      </video>
 
-      <div class="video-overlay-text">
-        <h3>Poetonic — Artist Platform</h3>
-        <p>Hero video · Poetonic · 2024</p>
+  <!-- Reels grid -->
+  <div class="reels-grid reveal">
+    <div class="reel-item">
+      <div class="reel-phone">
+        <video class="reel-video" src="media/reel1.mp4" loop muted playsinline preload="auto"></video>
+        <div class="reel-play">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="10"/><polygon points="10,8 16,12 10,16" fill="rgba(250,249,246,0.9)" stroke="none"/></svg>
+        </div>
       </div>
+      <p class="reel-label">01 — Reel</p>
     </div>
-    <div class="video-types">
-      <div class="video-type reveal">
-        <p class="video-type-num">01</p>
-        <h4>Mini documentaries</h4>
-        <p>Short-format visual stories that bridge the gap between the artist's studio and the public eye — framing your creative process with a narrative depth that standard documentation misses.</p>
+    <div class="reel-item">
+      <div class="reel-phone">
+        <video class="reel-video" src="media/reel2.mp4" loop muted playsinline preload="auto"></video>
+        <div class="reel-play">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="10"/><polygon points="10,8 16,12 10,16" fill="rgba(250,249,246,0.9)" stroke="none"/></svg>
+        </div>
       </div>
-      <div class="video-type reveal d1">
-        <p class="video-type-num">02</p>
-        <h4>Hero videos</h4>
-        <p>"Hero" content designed to capture the movement, sound, and atmosphere of your practice — and engage viewers instantly. Looping, full-screen, built to live behind your name.</p>
+      <p class="reel-label">02 — Reel</p>
+    </div>
+    <div class="reel-item">
+      <div class="reel-phone">
+        <video class="reel-video" src="media/reel3.mp4" loop muted playsinline preload="auto"></video>
+        <div class="reel-play">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="10"/><polygon points="10,8 16,12 10,16" fill="rgba(250,249,246,0.9)" stroke="none"/></svg>
+        </div>
       </div>
-      <div class="video-type reveal d2">
-        <p class="video-type-num">03</p>
-        <h4>Reels & demos</h4>
-        <p>High-impact short-format content for social. My background in cinematography means your reels carry a visual intelligence that cuts through the noise.</p>
-      </div>
+      <p class="reel-label">03 — Reel</p>
     </div>
   </div>
+
+  <!-- Service types -->
+  <div class="video-types">
+    <div class="video-type reveal">
+      <p class="video-type-num">01</p>
+      <h4>Mini documentaries</h4>
+      <p>Short-format visual stories that bridge the gap between the artist's studio and the public eye — framing your creative process with a narrative depth that standard documentation misses.</p>
+    </div>
+    <div class="video-type reveal d1">
+      <p class="video-type-num">02</p>
+      <h4>Hero videos</h4>
+      <p>"Hero" content designed to capture the movement, sound, and atmosphere of your practice — and engage viewers instantly. Looping, full-screen, built to live behind your name.</p>
+    </div>
+    <div class="video-type reveal d2">
+      <p class="video-type-num">03</p>
+      <h4>Reels & demos</h4>
+      <p>High-impact short-format content for social. My background in cinematography means your reels carry a visual intelligence that cuts through the noise.</p>
+    </div>
+  </div>
+
 </section>
 
-<div class="section-divider" style="margin-top: 0;"></div>
+<div class="section-divider"></div>
 
 <!-- WEBSITES -->
 <section id="websites">
@@ -1424,6 +1567,22 @@
   window.addEventListener('scroll', () => {
     document.querySelector('nav').classList.toggle('scrolled', window.scrollY > 40);
   });
+
+  // ── Reel hover-to-play (desktop only) ─────
+  if (window.innerWidth > 600) {
+    document.querySelectorAll('.reel-phone').forEach(phone => {
+      const video = phone.querySelector('.reel-video');
+      phone.addEventListener('mouseenter', () => video.play());
+      phone.addEventListener('mouseleave', () => { video.pause(); video.currentTime = 0; });
+    });
+  } else {
+    // Mobile: autoplay the first reel only
+    const firstReel = document.querySelector('.reel-video');
+    if (firstReel) {
+      firstReel.setAttribute('autoplay', '');
+      firstReel.play().catch(() => {});
+    }
+  }
 
   // ── Hamburger ──────────────────────────────
   function toggleMenu() {
