@@ -680,169 +680,6 @@
     line-height: 1.65;
   }
 
-  /* ── PRICING ─────────────────────────────── */
-  .pricing-section {
-    margin-top: 5rem;
-    padding-top: 3.5rem;
-    border-top: 1px solid var(--rule);
-  }
-
-  .pricing-label {
-    font-size: 0.58rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--muted);
-    margin-bottom: 2.5rem;
-  }
-
-  .pricing-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    border-top: 1px solid var(--rule);
-    border-left: 1px solid var(--rule);
-  }
-
-  .pricing-card {
-    padding: 2.5rem;
-    border-right: 1px solid var(--rule);
-    border-bottom: 1px solid var(--rule);
-  }
-
-  .pricing-card.featured { background: #f4f2ed; }
-
-  .pricing-tier {
-    font-size: 0.55rem;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--muted);
-    margin-bottom: 1.5rem;
-  }
-
-  .pricing-price {
-    font-family: var(--font-display);
-    font-size: 2.8rem;
-    font-weight: 300;
-    color: var(--ink);
-    line-height: 1;
-    margin-bottom: 0.4rem;
-  }
-
-  .pricing-price span { font-size: 1.1rem; color: var(--muted); }
-
-  .pricing-price-note {
-    font-size: 0.62rem;
-    color: var(--muted);
-    letter-spacing: 0.04em;
-    margin-bottom: 2rem;
-  }
-
-  .pricing-name {
-    font-family: var(--font-display);
-    font-size: 1.1rem;
-    font-weight: 300;
-    color: var(--ink);
-    margin-bottom: 0.5rem;
-  }
-
-  .pricing-desc {
-    font-size: 0.72rem;
-    color: var(--muted);
-    line-height: 1.65;
-    margin-bottom: 2rem;
-  }
-
-  .pricing-list {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 0.55rem;
-  }
-
-  .pricing-list li {
-    font-size: 0.7rem;
-    color: var(--muted);
-    display: flex;
-    gap: 0.75rem;
-    align-items: flex-start;
-    line-height: 1.5;
-  }
-
-  .pricing-list li::before {
-    content: '—';
-    color: var(--rule);
-    flex-shrink: 0;
-  }
-
-  .pricing-note {
-    margin-top: 2rem;
-    font-family: var(--font-display);
-    font-style: italic;
-    font-size: 0.75rem;
-    color: var(--muted);
-  }
-
-  /* ── OWNERSHIP ───────────────────────────── */
-  .ownership-section {
-    margin-top: 4rem;
-    padding-top: 3rem;
-    border-top: 1px solid var(--rule);
-    display: grid;
-    grid-template-columns: 1fr 2fr;
-    gap: 4rem;
-    align-items: start;
-  }
-
-  .ownership-left h4 {
-    font-family: var(--font-display);
-    font-size: clamp(1.5rem, 2.5vw, 2.2rem);
-    font-weight: 300;
-    color: var(--ink);
-    line-height: 1.15;
-    margin-bottom: 1rem;
-  }
-
-  .ownership-left h4 em { font-style: italic; }
-
-  .ownership-left p {
-    font-size: 0.75rem;
-    color: var(--muted);
-    line-height: 1.7;
-  }
-
-  .ownership-right {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2rem;
-    border-left: 1px solid var(--rule);
-    padding-left: 3rem;
-  }
-
-  .ownership-item { padding: 0; }
-
-  .ownership-num {
-    font-family: var(--font-display);
-    font-size: 1.2rem;
-    font-weight: 300;
-    color: var(--rule);
-    margin-bottom: 0.5rem;
-    line-height: 1;
-  }
-
-  .ownership-item h5 {
-    font-size: 0.65rem;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--ink);
-    margin-bottom: 0.4rem;
-    font-weight: 500;
-  }
-
-  .ownership-item p {
-    font-size: 0.72rem;
-    color: var(--muted);
-    line-height: 1.6;
-  }
-
   /* ── CONTACT ─────────────────────────────── */
   .contact-inner {
     max-width: 1400px;
@@ -1012,6 +849,237 @@
 
   #lightbox.open img { opacity: 1; transform: scale(1); }
 
+  /* ── TIER CARDS ─────────────────────────── */
+  .tier-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    border-top: 1px solid var(--rule);
+    border-left: 1px solid var(--rule);
+    margin-bottom: 2rem;
+  }
+
+  .tier-card {
+    padding: 2.5rem;
+    border-right: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  .tier-card--mid { background: #f4f2ed; }
+
+  .tier-card-top { display: flex; flex-direction: column; gap: 0.5rem; }
+
+  .tier-label {
+    font-size: 0.58rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  .tier-name {
+    font-family: var(--font-display);
+    font-size: 1.6rem;
+    font-weight: 300;
+    color: var(--ink);
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+  }
+
+  .tier-name em { font-style: italic; }
+
+  .tier-price {
+    font-family: var(--font-display);
+    font-size: 2.2rem;
+    font-weight: 300;
+    color: var(--ink);
+    line-height: 1;
+    margin-top: 0.5rem;
+  }
+
+  .tier-price span { font-size: 1rem; color: var(--muted); }
+
+  .tier-price-note {
+    font-size: 0.62rem;
+    color: var(--muted);
+    letter-spacing: 0.04em;
+  }
+
+  .tier-desc {
+    font-family: var(--font-display);
+    font-size: 0.9rem;
+    font-weight: 300;
+    color: var(--muted);
+    line-height: 1.7;
+    flex: 1;
+  }
+
+  .tier-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.45rem;
+  }
+
+  .tier-list li {
+    font-size: 0.68rem;
+    color: var(--muted);
+    display: flex;
+    gap: 0.6rem;
+    align-items: baseline;
+  }
+
+  .tier-list li::before {
+    content: "—";
+    color: var(--rule);
+    flex-shrink: 0;
+  }
+
+  .tier-example {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 1.25rem;
+    border-top: 1px solid var(--rule);
+    margin-top: auto;
+  }
+
+  .tier-example span {
+    font-size: 0.58rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  .tier-example a {
+    font-size: 0.7rem;
+    color: var(--ink);
+    text-decoration: none;
+    letter-spacing: 0.02em;
+    transition: color 0.2s;
+  }
+
+  .tier-example a:hover { color: var(--muted); }
+
+  .tiers-footnote {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 0.82rem;
+    color: var(--muted);
+    line-height: 1.65;
+    max-width: 640px;
+    padding: 2rem 0 6rem;
+    border-bottom: 1px solid var(--rule);
+    margin-bottom: 6rem;
+  }
+
+  /* ── SITE CASE STUDIES ───────────────────── */
+  .site-case {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: start;
+    padding: 5rem 0;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .site-case--reverse { direction: rtl; }
+  .site-case--reverse > * { direction: ltr; }
+
+  .site-case-tier {
+    font-size: 0.58rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 0.75rem;
+  }
+
+  .site-case-name {
+    font-family: var(--font-display);
+    font-size: clamp(1.8rem, 3vw, 2.8rem);
+    font-weight: 300;
+    color: var(--ink);
+    line-height: 1.05;
+    letter-spacing: -0.01em;
+    margin-bottom: 0.5rem;
+  }
+
+  .site-case-name em { font-style: italic; }
+
+  .site-case-url { margin-bottom: 1.5rem; }
+
+  .site-case-url a {
+    font-size: 0.7rem;
+    letter-spacing: 0.06em;
+    color: var(--muted);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .site-case-url a:hover { color: var(--ink); }
+
+  .site-case-desc {
+    font-family: var(--font-display);
+    font-size: 1rem;
+    font-weight: 300;
+    color: var(--ink);
+    line-height: 1.8;
+    margin-bottom: 2rem;
+  }
+
+  .site-case-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+
+  .site-case-tags span {
+    font-size: 0.6rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    border: 1px solid var(--rule);
+    padding: 0.3rem 0.65rem;
+  }
+
+  .site-case-image {
+    position: sticky;
+    top: 7rem;
+  }
+
+  .site-case-img-wrap {
+    aspect-ratio: 1/1.414;
+    overflow: hidden;
+    background: var(--rule);
+    position: relative;
+  }
+
+  .site-case-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+
+  .site-case-img-wrap:hover .site-case-img { transform: scale(1.02); }
+
+  .site-case-img-wrap.no-image::after {
+    content: "Hero image coming soon";
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 0.85rem;
+    color: var(--muted);
+  }
+
+  .site-case-img-wrap.no-image .site-case-img { opacity: 0; }
+
   /* ── TABLET 900px ────────────────────────── */
   @media (max-width: 900px) {
     nav { padding: 1.25rem 1.5rem; }
@@ -1025,6 +1093,11 @@
     .reel-item { padding: 0 1rem; }
     .reel-phone { max-width: 180px; }
     .case-study-header { grid-template-columns: 1fr; gap: 1.5rem; }
+    .tier-grid { grid-template-columns: 1fr; border-left: none; }
+    .tier-card { border-left: 1px solid var(--rule); }
+    .site-case { grid-template-columns: 1fr; gap: 3rem; }
+    .site-case--reverse { direction: ltr; }
+    .site-case-image { position: static; }
     .case-details { grid-template-columns: 1fr 1fr; }
     .case-features { grid-template-columns: 1fr; }
     .pricing-grid { grid-template-columns: 1fr; border-left: none; }
@@ -1115,6 +1188,10 @@
     .video-type { padding: 1.5rem 1.25rem; }
 
     .case-details { grid-template-columns: 1fr; }
+    .tier-grid { grid-template-columns: 1fr; border-left: none; }
+    .tier-card { border-left: 1px solid var(--rule); padding: 1.75rem 1.25rem; }
+    .site-case { padding: 3rem 0; gap: 2.5rem; }
+    .site-case-name { font-size: 1.8rem; }
     .pricing-card { padding: 1.75rem 1.25rem; }
     .pricing-price { font-size: 2.2rem; }
     .ownership-right { grid-template-columns: 1fr; }
@@ -1357,161 +1434,147 @@
     <h2 class="section-title">Websites <em>for artists</em></h2>
   </div>
 
-  <!-- Service intro -->
-  <div class="photography-note reveal" style="max-width: 780px; margin-bottom: 5rem;">
+  <!-- Intro -->
+  <div class="photography-note reveal" style="max-width: 700px; margin-bottom: 6rem;">
     <p>
-      I build <strong>specialized artist platforms</strong> using a professional-grade stack that eliminates recurring platform fees and puts total ownership back into your hands. Leveraging the same architecture as <strong>poetonic.com</strong>, these sites are designed to be fast, secure, and effortlessly manageable through a custom-tailored interface. The result is a sophisticated online home where your work, your shop, and your story live permanently — without the burden of monthly subscriptions.
+      A permanent home for your practice — fast, self-managed, and entirely yours. No subscriptions, no platform fees, no lock-in. Three tiers depending on where you are and where you want to go.
     </p>
   </div>
 
-  <!-- Case Study: Poetonic -->
-  <div class="case-study">
-    <div class="case-study-header">
-      <div>
-        <p class="case-study-label">Case Study</p>
-        <h3>Poetonic<em>.com</em></h3>
+  <!-- Tier cards -->
+  <div class="tier-grid reveal">
+
+    <div class="tier-card">
+      <div class="tier-card-top">
+        <p class="tier-label">Tier 1</p>
+        <h3 class="tier-name">Static <em>Presence</em></h3>
+        <p class="tier-price"><span>€</span>290 – 349</p>
+        <p class="tier-price-note">one-time · 30 days support</p>
       </div>
-      <p class="case-study-intro">
-        Built from scratch — shop, portfolio, built-in chat. All photography and video produced in-house. No platform fees, no Squarespace, no lock-in. This is the architecture every client site is built on.
+      <p class="tier-desc">Your work online, beautifully presented. No CMS, no moving parts — just a considered, professional site that loads fast and looks serious from day one.</p>
+      <ul class="tier-list">
+        <li>Up to 4 pages</li>
+        <li>Custom domain</li>
+        <li>Fully responsive</li>
+        <li>You own everything outright</li>
+      </ul>
+      <p class="tier-example">
+        <span>Example</span>
+        <a href="#case-t1">donsamec.com ↓</a>
       </p>
     </div>
 
-    <div class="case-study-screen reveal-scale">
-      <div class="browser-bar">
-        <div class="browser-dots">
-          <span></span><span></span><span></span>
-        </div>
-        <div class="browser-url">poetonic.com</div>
+    <div class="tier-card tier-card--mid">
+      <div class="tier-card-top">
+        <p class="tier-label">Tier 2</p>
+        <h3 class="tier-name">Editable <em>Site</em></h3>
+        <p class="tier-price"><span>€</span>690 – 790</p>
+        <p class="tier-price-note">one-time · 30 days support</p>
       </div>
-      <div class="screen-content" style="aspect-ratio: auto; padding: 0;">
-        <img src="media/website.jpg" alt="Poetonic.com" style="width: 100%; display: block;">
-      </div>
-      <div class="screen-caption">
-        <span>poetonic.com</span>
-        <span>Next.js · Sanity CMS · Vercel · Stripe</span>
-      </div>
+      <p class="tier-desc">Update your own work, bio, prices and exhibitions — no code, no calls to me. Built on Sanity CMS, the same system galleries and publishers use.</p>
+      <ul class="tier-list">
+        <li>Up to 6 pages</li>
+        <li>Sanity Studio at /studio</li>
+        <li>Sold / available toggle</li>
+        <li>Shop-ready — ecommerce without a rebuild</li>
+      </ul>
+      <p class="tier-example">
+        <span>Example</span>
+        <a href="#case-t2">corkcollagecollective.com ↓</a>
+      </p>
     </div>
 
-    <div class="case-details reveal">
-      <div class="case-detail">
-        <p class="case-detail-key">Stack</p>
-        <p class="case-detail-val">Next.js + Sanity CMS + Vercel + Stripe + Resend</p>
+    <div class="tier-card">
+      <div class="tier-card-top">
+        <p class="tier-label">Tier 3</p>
+        <h3 class="tier-name">Full <em>Platform</em></h3>
+        <p class="tier-price"><span>€</span>1,490</p>
+        <p class="tier-price-note">one-time · 30 days support</p>
       </div>
-      <div class="case-detail">
-        <p class="case-detail-key">Built in</p>
-        <p class="case-detail-val">Cork, Ireland. All content shot and designed in-house.</p>
-      </div>
-      <div class="case-detail">
-        <p class="case-detail-key">Ownership</p>
-        <p class="case-detail-val">100% owned. No monthly fees. No platform cut.</p>
-      </div>
+      <p class="tier-desc">Sell directly from your site, build your mailing list, and own every piece of data. Photography session and hero video included. The complete infrastructure.</p>
+      <ul class="tier-list">
+        <li>Full ecommerce via Stripe</li>
+        <li>Mailing list — no Mailchimp fees</li>
+        <li>Photography session included</li>
+        <li>Hero video included</li>
+      </ul>
+      <p class="tier-example">
+        <span>Example</span>
+        <a href="#case-t3">poetonic.com ↓</a>
+      </p>
     </div>
 
-    <div class="case-features reveal d1">
-      <div class="case-feature">
-        <p class="case-feature-title">Ecommerce</p>
-        <p class="case-feature-desc">Full shop — originals, prints, editions. Stripe integration, buyers pay direct, no Shopify cut.</p>
+  </div>
+
+  <!-- Shared note -->
+  <p class="tiers-footnote reveal">All tiers — one-time cost. No subscriptions. No Squarespace. No Shopify. You own the code, the domain, and all content outright. Post-launch edits quoted separately.</p>
+
+  <!-- ── CASE STUDIES ── -->
+
+  <!-- Tier 1: donsamec.com -->
+  <div class="site-case reveal" id="case-t1">
+    <div class="site-case-meta">
+      <p class="site-case-tier">Tier 1 — Static Presence</p>
+      <h3 class="site-case-name">donsamec<em>.com</em></h3>
+      <p class="site-case-url"><a href="https://donsamec.com" target="_blank">donsamec.com ↗</a></p>
+      <p class="site-case-desc">The site you are on right now. A static portfolio and service showcase — no CMS, no database, nothing to maintain. Fast, typographically strong, and entirely self-contained.</p>
+      <div class="site-case-tags">
+        <span>GitHub Pages</span>
+        <span>Static HTML</span>
+        <span>Custom domain</span>
       </div>
-      <div class="case-feature">
-        <p class="case-feature-title">Portfolio CMS</p>
-        <p class="case-feature-desc">Sanity Studio at /studio. Add work, update prices, mark sold — no code, no calls.</p>
-      </div>
-      <div class="case-feature">
-        <p class="case-feature-title">Mailing list</p>
-        <p class="case-feature-desc">Resend integration. Collect emails, send campaigns. No Mailchimp, no subscription fees.</p>
-      </div>
-      <div class="case-feature">
-        <p class="case-feature-title">Live chat</p>
-        <p class="case-feature-desc">Built-in chat feature for direct collector conversations. Custom-built, no third-party widget.</p>
-      </div>
-      <div class="case-feature">
-        <p class="case-feature-title">Photography</p>
-        <p class="case-feature-desc">All site photography shot and edited in-house. Consistent studio lighting across the full catalogue.</p>
-      </div>
-      <div class="case-feature">
-        <p class="case-feature-title">Hero video</p>
-        <p class="case-feature-desc">Looping full-screen video, shot and colour-graded to match the practice. Zero third-party video hosting.</p>
+    </div>
+    <div class="site-case-image">
+      <div class="site-case-img-wrap">
+        <img src="media/t1-hero.jpg" alt="donsamec.com" class="site-case-img" loading="lazy" onerror="this.parentElement.classList.add('no-image')">
       </div>
     </div>
   </div>
 
-  <!-- Pricing -->
-  <div class="pricing-section reveal">
-    <p class="pricing-label">Website Tiers — One-time cost, you own everything</p>
-    <div class="pricing-grid">
-      <div class="pricing-card reveal">
-        <p class="pricing-tier">Tier 1 — Static Presence</p>
-        <div class="pricing-price"><span>€</span>290 – 349</div>
-        <p class="pricing-price-note">one-time · 30 days support included</p>
-        <p class="pricing-name">A considered online presence.</p>
-        <p class="pricing-desc">No CMS, no moving parts — just your work, beautifully presented. Your work looks serious online from day one.</p>
-        <ul class="pricing-list">
-          <li>Up to 4 pages: Home, Work, Bio, Contact</li>
-          <li>Custom domain connected (or registered)</li>
-          <li>Fully responsive, SSL secured</li>
-          <li>GitHub Pages hosting — free forever</li>
-          <li>You own the repo and domain outright</li>
-        </ul>
-        <p class="pricing-note">Content changes go through me. Natural upgrade path to Tier 2.</p>
+  <!-- Tier 2: corkcollagecollective.com -->
+  <div class="site-case site-case--reverse reveal" id="case-t2">
+    <div class="site-case-meta">
+      <p class="site-case-tier">Tier 2 — Editable Site with CMS</p>
+      <h3 class="site-case-name">Cork Collage<br><em>Collective</em></h3>
+      <p class="site-case-url"><a href="https://corkcollagecollective.com" target="_blank">corkcollagecollective.com ↗</a></p>
+      <p class="site-case-desc">A community platform for a collage collective — members submit work, browse monthly archives, download archival photos, and sign up to the newsletter. The studio gives full editorial control: approve submissions, toggle homepage features, manage events, publish monthly photos.</p>
+      <div class="site-case-tags">
+        <span>Next.js 15</span>
+        <span>Sanity CMS</span>
+        <span>Resend</span>
+        <span>Vercel</span>
+        <span>Cloudflare</span>
       </div>
-      <div class="pricing-card featured reveal d2">
-        <p class="pricing-tier">Tier 2 — Editable Site with CMS</p>
-        <div class="pricing-price"><span>€</span>690 – 790</div>
-        <p class="pricing-price-note">one-time · 30 days support included</p>
-        <p class="pricing-name">Your site, your control.</p>
-        <p class="pricing-desc">Update your work, bio and prices yourself — no code, no calls to me.</p>
-        <ul class="pricing-list">
-          <li>Up to 6 pages depending on complexity</li>
-          <li>Sanity Studio — edit everything at /studio</li>
-          <li>Works, Bio, Exhibitions, Prices, Sold toggle</li>
-          <li>Shop-ready architecture — ecommerce without rebuild</li>
-          <li>You own GitHub repo, Sanity project, Vercel account</li>
-        </ul>
-        <p class="pricing-note">No monthly subscription. No platform fees. No lock-in.</p>
-      </div>
-      <div class="pricing-card">
-        <p class="pricing-tier">Tier 3 — Full Platform</p>
-        <div class="pricing-price"><span>€</span>1,490</div>
-        <p class="pricing-price-note">one-time · 30 days support included</p>
-        <p class="pricing-name">Built to sell. Built to grow.</p>
-        <p class="pricing-desc">Ecommerce, mailing, photography session — a complete platform. Comparable to what Squarespace + Shopify + Mailchimp costs every year, forever.</p>
-        <ul class="pricing-list">
-          <li>Everything in Tier 2, plus:</li>
-          <li>Full ecommerce — Stripe, no platform cut</li>
-          <li>Mailing list via Resend — no Mailchimp fees</li>
-          <li>Professional photography session (Cork / Ireland)</li>
-          <li>Hero video — shot or sourced to match practice</li>
-          <li>You own code, content, customer data, mailing list</li>
-        </ul>
-        <p class="pricing-note">This is the top tier. Growth via retainer or individual upgrade quotes.</p>
+    </div>
+    <div class="site-case-image">
+      <div class="site-case-img-wrap">
+        <img src="media/t2-hero.jpg" alt="corkcollagecollective.com" class="site-case-img" loading="lazy" onerror="this.parentElement.classList.add('no-image')">
       </div>
     </div>
   </div>
 
-  <!-- Ownership / How it works -->
-  <div class="ownership-section reveal">
-    <div class="ownership-left">
-      <h4>Everything<br>is <em>yours</em><br>from day one.</h4>
-      <p>No proprietary systems. No hidden dependencies on me. You are never locked in — if you want to work with someone else in the future, everything transfers cleanly.</p>
+  <!-- Tier 3: poetonic.com -->
+  <div class="site-case reveal" id="case-t3">
+    <div class="site-case-meta">
+      <p class="site-case-tier">Tier 3 — Full Platform</p>
+      <h3 class="site-case-name">Poetonic<em>.com</em></h3>
+      <p class="site-case-url"><a href="https://poetonic.com" target="_blank">poetonic.com ↗</a></p>
+      <p class="site-case-desc">A complete artist platform built from scratch — shop, portfolio, mailing list, built-in chat. Originals and editions sold directly via Stripe, no platform cut. All photography and video produced in-house. The architecture that every Tier 3 build is modelled on.</p>
+      <div class="site-case-tags">
+        <span>Next.js</span>
+        <span>Sanity CMS</span>
+        <span>Stripe</span>
+        <span>Resend</span>
+        <span>Vercel</span>
+      </div>
     </div>
-    <div class="ownership-right">
-      <div class="ownership-item reveal">
-        <p class="ownership-num">01</p>
-        <h5>GitHub</h5>
-        <p>Your code. A private repository created under your name. You never need to open it — it's the engine room.</p>
-      </div>
-      <div class="ownership-item reveal d2">
-        <p class="ownership-num">02</p>
-        <h5>Sanity</h5>
-        <p>Your content. Log in at yoursite.com/studio. Add a piece, upload an image, mark something sold. Live in seconds.</p>
-      </div>
-      <div class="ownership-item reveal d3">
-        <p class="ownership-num">03</p>
-        <h5>Vercel</h5>
-        <p>Your hosting. Fast, live, secure. Your own free account. Runs in the background — you'll rarely need to touch it.</p>
+    <div class="site-case-image">
+      <div class="site-case-img-wrap">
+        <img src="media/t3-hero.jpg" alt="poetonic.com" class="site-case-img" loading="lazy" onerror="this.parentElement.classList.add('no-image')">
       </div>
     </div>
   </div>
+
 </section>
 
 <div class="section-divider"></div>
