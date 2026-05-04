@@ -40,8 +40,6 @@
 
 
 
-  .hamburger { display: none; }
-
   html { scroll-behavior: smooth; }
 
   body {
@@ -1132,62 +1130,24 @@
   @media (max-width: 600px) {
     nav {
       padding: 1rem 1.25rem;
+      flex-wrap: wrap;
+      gap: 0.5rem;
     }
 
     nav ul {
-      display: none;
-      position: fixed;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background: var(--bg);
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 2.5rem;
-      z-index: 99;
-      padding: 0;
-      margin: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem 1.25rem;
+      width: 100%;
     }
-
-    nav ul.open { display: flex; }
-
-    nav ul li { list-style: none; }
 
     nav ul a {
-      font-family: var(--font-display);
-      font-size: 1.6rem;
-      font-weight: 500;
-      letter-spacing: -0.01em;
-      color: var(--ink);
-      text-decoration: none;
-      text-transform: none;
-      opacity: 1;
+      font-size: 0.6rem;
+      letter-spacing: 0.1em;
+      opacity: 0.7;
     }
 
-    .hamburger {
-      display: flex;
-      flex-direction: column;
-      gap: 5px;
-      cursor: pointer;
-      z-index: 101;
-      padding: 4px;
-      background: none;
-      border: none;
-    }
-
-    .hamburger span {
-      display: block;
-      width: 22px;
-      height: 1.5px;
-      background: var(--ink);
-      transition: all 0.3s ease;
-      transform-origin: center;
-    }
-
-    .hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
-    .hamburger.open span:nth-child(2) { opacity: 0; }
-    .hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
-
-    #hero { padding: 0 1.25rem 3.5rem; min-height: 100svh; }
+    #hero { padding: 0 1.25rem 3rem; min-height: 85svh; }
     .hero-title { font-size: clamp(2.8rem, 13vw, 4rem); margin-bottom: 1.5rem; }
     .scroll-hint { display: none; }
 
@@ -1286,17 +1246,12 @@
 <nav>
   <a href="#" class="logo">Don Samec<span>.</span></a>
   <ul id="nav-menu">
-    <li><a href="#about" onclick="closeMenu()">About</a></li>
-    <li><a href="#photography" onclick="closeMenu()">Photography</a></li>
-    <li><a href="#video" onclick="closeMenu()">Video</a></li>
-    <li><a href="#websites" onclick="closeMenu()">Websites</a></li>
-    <li><a href="#contact" onclick="closeMenu()">Contact</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#photography">Photography</a></li>
+    <li><a href="#video">Video</a></li>
+    <li><a href="#websites">Websites</a></li>
+    <li><a href="#contact">Contact</a></li>
   </ul>
-  <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Menu">
-    <span></span>
-    <span></span>
-    <span></span>
-  </button>
 </nav>
 
 <!-- HERO -->
@@ -1706,21 +1661,7 @@
     document.querySelector('nav').classList.toggle('scrolled', window.scrollY > 40);
   }, { passive: true });
 
-  // ── Hamburger ──────────────────────────────
-  function toggleMenu() {
-    const menu = document.getElementById('nav-menu');
-    const burger = document.getElementById('hamburger');
-    menu.classList.toggle('open');
-    burger.classList.toggle('open');
-    document.body.style.overflow = menu.classList.contains('open') ? 'hidden' : '';
-  }
-  function closeMenu() {
-    const menu = document.getElementById('nav-menu');
-    const burger = document.getElementById('hamburger');
-    menu.classList.remove('open');
-    burger.classList.remove('open');
-    document.body.style.overflow = '';
-  }
+
 
   // ── Scroll reveal ──────────────────────────
   const revealObserver = new IntersectionObserver((entries) => {
