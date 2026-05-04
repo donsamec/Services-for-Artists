@@ -837,21 +837,23 @@
   /* ── SPLIT FLAP ───────────────────────────── */
   .flap-char {
     display: inline-block;
-    position: relative;
+    width: 0.62em;
+    text-align: center;
+    font-variant-numeric: tabular-nums;
+    overflow: visible;
     white-space: pre;
   }
 
-  .flap-char.space { display: inline-block; }
+  /* wider slots for wider chars */
+  .flap-char.flap-wide { width: 0.78em; }
+  .flap-char.flap-narrow { width: 0.38em; }
   .flap-char.flap-italic { font-style: italic; }
 
-  @keyframes flapFlicker {
-    0%   { opacity: 0.4; }
-    50%  { opacity: 1; }
-    100% { opacity: 1; }
-  }
-
-  .flap-char.settling {
-    animation: flapFlicker 0.06s ease-out;
+  /* cycling chars use monospace so width never changes */
+  .flap-char.cycling {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 0.85em;
+    vertical-align: baseline;
   }
 
   /* ── LIGHTBOX ────────────────────────────── */
@@ -1702,32 +1704,47 @@
     lines.forEach(l => { totalChars += l.text.replace(/ /g, '').length; });
     const totalDuration = totalChars * CHAR_DELAY + FLAP_COUNT * FLAP_INTERVAL + 200;
 
+    // Width map — pre-assign slot widths so layout never shifts
+    const wideChars  = new Set(['W','M','m','w','%','@']);
+    const narrowChars = new Set(['i','l','1','I','.',',',';',':','!','|',''']);
+
     function animateLine(lineId, text, startDelay, italicIndices) {
       const el = document.getElementById(lineId);
       if (!el) return;
 
       const spans = [];
       for (let i = 0; i < text.length; i++) {
+        const c = text[i];
+        let cls = 'flap-char';
+        if (italicIndices && italicIndices.includes(i)) cls += ' flap-italic';
+        if (c === ' ') { cls += ' flap-space'; }
+        else if (wideChars.has(c.toUpperCase())) { cls += ' flap-wide'; }
+        else if (narrowChars.has(c)) { cls += ' flap-narrow'; }
+
         const span = document.createElement('span');
-        span.className = (italicIndices && italicIndices.includes(i)) ? 'flap-char flap-italic' : 'flap-char';
-        span.textContent = '\u00A0';
+        span.className = cls;
+        span.textContent = c === ' ' ? '\u00A0' : '\u00A0';
         span.setAttribute('aria-hidden', 'true');
         el.appendChild(span);
-        spans.push({ span, char: text[i] });
+        spans.push({ span, char: c });
       }
 
       spans.forEach(({ span, char }, i) => {
         if (char === ' ') {
+          // space slot — just reveal it
           setTimeout(() => { span.textContent = '\u00A0'; }, startDelay + i * CHAR_DELAY);
           return;
         }
         let tick = 0;
         setTimeout(() => {
+          span.classList.add('cycling');
           const interval = setInterval(() => {
             if (tick < FLAP_COUNT) {
-              span.textContent = chars[Math.floor(Math.random() * chars.length)];
+              // Use only uppercase A-Z during cycling — consistent width
+              span.textContent = String.fromCharCode(65 + Math.floor(Math.random() * 26));
               tick++;
             } else {
+              span.classList.remove('cycling');
               span.textContent = char;
               clearInterval(interval);
             }
