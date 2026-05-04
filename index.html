@@ -835,26 +835,37 @@
   }
 
   /* ── SPLIT FLAP ───────────────────────────── */
-  .flap-char {
+  .flap-wrapper {
+    position: relative;
     display: inline-block;
-    width: 0.62em;
-    text-align: center;
-    font-variant-numeric: tabular-nums;
-    overflow: visible;
+  }
+
+  /* Ghost text locks the line width from frame one */
+  .flap-ghost {
+    visibility: hidden;
+    user-select: none;
+    pointer-events: none;
+    display: inline-block;
+  }
+
+  .flap-ghost--2 em,
+  .flap-ghost--2 .flap-italic {
+    font-style: italic;
+  }
+
+  /* Animated text sits exactly on top of ghost */
+  .flap-line {
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
+
+  .flap-char {
+    display: inline;
     white-space: pre;
   }
 
-  /* wider slots for wider chars */
-  .flap-char.flap-wide { width: 0.78em; }
-  .flap-char.flap-narrow { width: 0.38em; }
   .flap-char.flap-italic { font-style: italic; }
-
-  /* cycling chars use monospace so width never changes */
-  .flap-char.cycling {
-    font-family: 'Courier New', Courier, monospace;
-    font-size: 0.85em;
-    vertical-align: baseline;
-  }
 
   /* ── LIGHTBOX ────────────────────────────── */
   #lightbox {
@@ -1293,8 +1304,14 @@
   <div class="hero-content">
     <p class="hero-label">Visual Communication for Artists</p>
     <h1 class="hero-title" id="flap-title" aria-label="Show your work properly.">
-      <span class="flap-line" id="flap-line-1"></span><br>
-      <span class="flap-line" id="flap-line-2"></span>
+      <span class="flap-wrapper">
+        <span class="flap-ghost">Show your</span>
+        <span class="flap-line" id="flap-line-1"></span>
+      </span><br>
+      <span class="flap-wrapper">
+        <span class="flap-ghost flap-ghost--2">work properly.</span>
+        <span class="flap-line" id="flap-line-2"></span>
+      </span>
     </h1>
     <p class="hero-sub">
       Photography. Video. Websites.<br>
@@ -1704,10 +1721,6 @@
     lines.forEach(l => { totalChars += l.text.replace(/ /g, '').length; });
     const totalDuration = totalChars * CHAR_DELAY + FLAP_COUNT * FLAP_INTERVAL + 200;
 
-    // Width map — pre-assign slot widths so layout never shifts
-    const wideChars  = new Set(['W','M','m','w','%','@']);
-    const narrowChars = new Set(['i','l','1','I','.',',',';',':','!','|',''']);
-
     function animateLine(lineId, text, startDelay, italicIndices) {
       const el = document.getElementById(lineId);
       if (!el) return;
@@ -1717,9 +1730,6 @@
         const c = text[i];
         let cls = 'flap-char';
         if (italicIndices && italicIndices.includes(i)) cls += ' flap-italic';
-        if (c === ' ') { cls += ' flap-space'; }
-        else if (wideChars.has(c.toUpperCase())) { cls += ' flap-wide'; }
-        else if (narrowChars.has(c)) { cls += ' flap-narrow'; }
 
         const span = document.createElement('span');
         span.className = cls;
@@ -1731,20 +1741,16 @@
 
       spans.forEach(({ span, char }, i) => {
         if (char === ' ') {
-          // space slot — just reveal it
           setTimeout(() => { span.textContent = '\u00A0'; }, startDelay + i * CHAR_DELAY);
           return;
         }
         let tick = 0;
         setTimeout(() => {
-          span.classList.add('cycling');
           const interval = setInterval(() => {
             if (tick < FLAP_COUNT) {
-              // Use only uppercase A-Z during cycling — consistent width
-              span.textContent = String.fromCharCode(65 + Math.floor(Math.random() * 26));
+              span.textContent = chars[Math.floor(Math.random() * chars.length)];
               tick++;
             } else {
-              span.classList.remove('cycling');
               span.textContent = char;
               clearInterval(interval);
             }
