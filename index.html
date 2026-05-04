@@ -14,18 +14,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
-<link href="https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@400,500,600,700&display=swap" rel="stylesheet">
-<style>
-  /* Prevent layout shift / font flash on hero title */
-  @font-face {
-    font-family: 'Cabinet Grotesk Fallback';
-    src: local('Arial');
-    ascent-override: 94%;
-    descent-override: 22%;
-    line-gap-override: 0%;
-    size-adjust: 105%;
-  }
-</style>
+
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -34,7 +23,7 @@
     --ink:      #0f0e0d;
     --muted:    #9a9590;
     --rule:     #e2e0db;
-    --font-display: 'CabinetGrotesk-Variable', 'Cabinet Grotesk', sans-serif;
+    --font-display: 'Helvetica Neue', Helvetica, Arial, sans-serif;
     --font-ui:  'Inter', sans-serif;
   }
 
@@ -128,7 +117,7 @@
   }
 
   .hero-title {
-    font-family: 'CabinetGrotesk-Variable', 'Cabinet Grotesk', 'Cabinet Grotesk Fallback', Arial, sans-serif;
+    font-family: var(--font-display);
     font-size: clamp(3.5rem, 8vw, 8rem);
     font-weight: 300;
     line-height: 0.95;
