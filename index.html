@@ -220,6 +220,17 @@
   }
 
   /* ── ABOUT ───────────────────────────────── */
+  /* ── SCROLL OFFSET (fixed nav compensation) ─ */
+  #about, #photography, #video, #websites, #contact {
+    scroll-margin-top: 80px;
+  }
+
+  @media (max-width: 600px) {
+    #about, #photography, #video, #websites, #contact {
+      scroll-margin-top: 110px;
+    }
+  }
+
   #about { border-top: none; }
 
   .about-grid {
@@ -1393,14 +1404,14 @@
 <div class="section-divider"></div>
 
 <!-- VIDEO -->
-<div class="video-section-header">
+<div class="video-section-header" id="video">
   <div class="section-header reveal" style="margin-bottom: 0; border-bottom: 1px solid var(--rule); padding-bottom: 1.25rem;">
     <span class="section-num">03</span>
     <h2 class="section-title"><em>Video</em></h2>
   </div>
 </div>
 
-<section id="video" style="padding: 0; max-width: none; border-top: none;">
+<section style="padding: 0; max-width: none; border-top: none;">
 
   <!-- Reels grid -->
   <div class="reels-grid">
