@@ -1142,14 +1142,26 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      gap: 2rem;
+      gap: 2.5rem;
       z-index: 99;
       padding: 0;
+      margin: 0;
     }
 
     nav ul.open { display: flex; }
 
-    nav ul a { font-size: 1rem; color: var(--ink); letter-spacing: 0.08em; }
+    nav ul li { list-style: none; }
+
+    nav ul a {
+      font-family: var(--font-display);
+      font-size: 1.6rem;
+      font-weight: 500;
+      letter-spacing: -0.01em;
+      color: var(--ink);
+      text-decoration: none;
+      text-transform: none;
+      opacity: 1;
+    }
 
     .hamburger {
       display: flex;
@@ -1198,9 +1210,9 @@
       scroll-snap-type: x mandatory;
       -webkit-overflow-scrolling: touch;
       scrollbar-width: none;
-      padding: 3rem 1.25rem;
+      padding: 3rem 1.25rem 2rem;
       gap: 1.5rem;
-      border-bottom: 1px solid var(--rule);
+      border-bottom: none;
     }
     .reels-grid::-webkit-scrollbar { display: none; }
     .reel-item {
@@ -1218,21 +1230,22 @@
     .reel-phone { max-width: 100%; width: 100%; cursor: pointer; }
     .reel-phone:hover { transform: none; box-shadow: 0 2px 4px rgba(15,14,13,0.05), 0 12px 40px rgba(15,14,13,0.1), inset 0 0 0 1px rgba(15,14,13,0.07); }
 
-    /* hide play icon on mobile, show video directly */
+    /* hide play icon on mobile */
     .reel-play { display: none; }
 
-    /* swipe hint dots */
+    /* dots */
     .reel-dots {
       display: flex;
       justify-content: center;
       gap: 6px;
-      padding: 1rem 0 0;
+      padding: 0 0 2.5rem;
+      border-bottom: 1px solid var(--rule);
     }
     .reel-dot {
-      width: 6px; height: 6px;
+      width: 5px; height: 5px;
       border-radius: 50%;
       background: var(--rule);
-      transition: background 0.2s;
+      transition: background 0.25s;
     }
     .reel-dot.active { background: var(--ink); }
 
