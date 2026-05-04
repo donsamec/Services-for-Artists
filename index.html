@@ -16,6 +16,17 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 <link href="https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@400,500,600,700&display=swap" rel="stylesheet">
 <style>
+  /* Prevent layout shift / font flash on hero title */
+  @font-face {
+    font-family: 'Cabinet Grotesk Fallback';
+    src: local('Arial');
+    ascent-override: 94%;
+    descent-override: 22%;
+    line-gap-override: 0%;
+    size-adjust: 105%;
+  }
+</style>
+<style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
   :root {
@@ -119,7 +130,7 @@
   }
 
   .hero-title {
-    font-family: var(--font-display);
+    font-family: 'CabinetGrotesk-Variable', 'Cabinet Grotesk', 'Cabinet Grotesk Fallback', Arial, sans-serif;
     font-size: clamp(3.5rem, 8vw, 8rem);
     font-weight: 300;
     line-height: 0.95;
@@ -455,6 +466,8 @@
     text-transform: uppercase;
     color: var(--muted);
   }
+
+  .reel-dots { display: none; }
 
   /* ── VIDEO ───────────────────────────────── */
   .video-section-header {
@@ -1129,12 +1142,14 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      gap: 2.5rem;
+      gap: 2rem;
       z-index: 99;
+      padding: 0;
     }
 
     nav ul.open { display: flex; }
-    nav ul a { font-size: 1rem; color: var(--ink); }
+
+    nav ul a { font-size: 1rem; color: var(--ink); letter-spacing: 0.08em; }
 
     .hamburger {
       display: flex;
@@ -1175,21 +1190,51 @@
 
     .gallery-masonry { columns: 1; }
 
-    /* Mobile: show only first reel, centered */
+    /* Mobile: horizontal swipe carousel */
     .reels-grid {
-      grid-template-columns: 1fr;
+      display: flex;
+      flex-direction: row;
+      overflow-x: scroll;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
       padding: 3rem 1.25rem;
-      gap: 0;
+      gap: 1.5rem;
+      border-bottom: 1px solid var(--rule);
+    }
+    .reels-grid::-webkit-scrollbar { display: none; }
+    .reel-item {
+      flex: 0 0 75vw;
+      scroll-snap-align: center;
+      align-items: center;
+      border-right: none;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
     }
     .reel-item:nth-child(2),
-    .reel-item:nth-child(3) { display: none; }
-    .reel-item { align-items: center; border-right: none; padding: 0; }
-    .reel-phone { max-width: 260px; }
+    .reel-item:nth-child(3) { display: flex; }
+    .reel-phone { max-width: 100%; width: 100%; cursor: pointer; }
+    .reel-phone:hover { transform: none; box-shadow: 0 2px 4px rgba(15,14,13,0.05), 0 12px 40px rgba(15,14,13,0.1), inset 0 0 0 1px rgba(15,14,13,0.07); }
 
     /* hide play icon on mobile, show video directly */
     .reel-play { display: none; }
-    .reel-phone { cursor: default; }
-    .reel-phone:hover { transform: none; box-shadow: 0 2px 4px rgba(15,14,13,0.05), 0 12px 40px rgba(15,14,13,0.1), inset 0 0 0 1px rgba(15,14,13,0.07); }
+
+    /* swipe hint dots */
+    .reel-dots {
+      display: flex;
+      justify-content: center;
+      gap: 6px;
+      padding: 1rem 0 0;
+    }
+    .reel-dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--rule);
+      transition: background 0.2s;
+    }
+    .reel-dot.active { background: var(--ink); }
 
     .video-section-header { padding: 4rem 1.25rem 2rem; }
     .video-type { padding: 1.5rem 1.25rem; }
@@ -1410,6 +1455,13 @@
       </div>
       <p class="reel-label">Zine Demo</p>
     </div>
+  </div>
+
+  <!-- swipe dots (mobile only) -->
+  <div class="reel-dots" id="reel-dots">
+    <div class="reel-dot active"></div>
+    <div class="reel-dot"></div>
+    <div class="reel-dot"></div>
   </div>
 
   <!-- Service types -->
@@ -1686,19 +1738,26 @@
       });
     });
   } else {
-    // Mobile: tap to play/pause on first reel
-    const firstPhone = document.querySelector('.reel-phone');
-    const firstVideo = firstPhone && firstPhone.querySelector('.reel-video');
-    if (firstVideo) {
-      firstVideo.setAttribute('playsinline', '');
-      firstVideo.setAttribute('muted', '');
-      firstPhone.addEventListener('click', () => {
-        if (firstVideo.paused) {
-          firstVideo.play().catch(() => {});
-        } else {
-          firstVideo.pause();
-        }
+    // Mobile: tap to play/pause on each reel
+    document.querySelectorAll('.reel-phone').forEach(phone => {
+      const video = phone.querySelector('.reel-video');
+      if (!video) return;
+      phone.addEventListener('click', () => {
+        if (video.paused) video.play().catch(() => {});
+        else video.pause();
       });
+    });
+
+    // Swipe dots — update active dot on scroll
+    const grid = document.querySelector('.reels-grid');
+    const dots = document.querySelectorAll('.reel-dot');
+    const dotsWrap = document.getElementById('reel-dots');
+    if (grid && dots.length && dotsWrap) {
+      dotsWrap.style.display = 'flex';
+      grid.addEventListener('scroll', () => {
+        const index = Math.round(grid.scrollLeft / grid.offsetWidth);
+        dots.forEach((d, i) => d.classList.toggle('active', i === index));
+      }, { passive: true });
     }
   }
 
