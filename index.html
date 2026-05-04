@@ -835,13 +835,35 @@
     to   { opacity: 1; transform: translateY(0); }
   }
 
-  .hero-content > * {
-    animation: fadeUp 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+  .hero-label {
+    opacity: 0;
+    animation: fadeUp 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.1s both;
   }
 
-  .hero-label { animation-delay: 0.15s; }
-  .hero-title { animation-delay: 0.3s; }
-  .hero-sub   { animation-delay: 0.45s; }
+  .hero-sub {
+    opacity: 0;
+    animation: fadeUp 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+  }
+
+  /* ── SPLIT FLAP ───────────────────────────── */
+  .flap-char {
+    display: inline-block;
+    position: relative;
+    white-space: pre;
+  }
+
+  .flap-char.space { display: inline-block; }
+  .flap-char.flap-italic { font-style: italic; }
+
+  @keyframes flapFlicker {
+    0%   { opacity: 0.4; }
+    50%  { opacity: 1; }
+    100% { opacity: 1; }
+  }
+
+  .flap-char.settling {
+    animation: flapFlicker 0.06s ease-out;
+  }
 
   /* ── LIGHTBOX ────────────────────────────── */
   #lightbox {
@@ -1279,9 +1301,9 @@
   <div class="hero-number">DS</div>
   <div class="hero-content">
     <p class="hero-label">Visual Communication for Artists</p>
-    <h1 class="hero-title">
-      Show your<br>
-      work <em>properly.</em>
+    <h1 class="hero-title" id="flap-title" aria-label="Show your work properly.">
+      <span class="flap-line" id="flap-line-1"></span><br>
+      <span class="flap-line" id="flap-line-2"></span>
     </h1>
     <p class="hero-sub">
       Photography. Video. Websites.<br>
@@ -1674,6 +1696,69 @@
 
 <script>
   const isMobile = window.innerWidth <= 600;
+
+  // ── Split-flap title ───────────────────────
+  (function() {
+    const lines = [
+      { id: 'flap-line-1', text: 'Show your' },
+      { id: 'flap-line-2', text: 'work properly.' }
+    ];
+
+    const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!?#@&%';
+    const FLAP_INTERVAL = 45;
+    const FLAP_COUNT   = 5;
+    const CHAR_DELAY   = 55;
+
+    let totalChars = 0;
+    lines.forEach(l => { totalChars += l.text.replace(/ /g, '').length; });
+    const totalDuration = totalChars * CHAR_DELAY + FLAP_COUNT * FLAP_INTERVAL + 200;
+
+    function animateLine(lineId, text, startDelay, italicIndices) {
+      const el = document.getElementById(lineId);
+      if (!el) return;
+
+      const spans = [];
+      for (let i = 0; i < text.length; i++) {
+        const span = document.createElement('span');
+        span.className = (italicIndices && italicIndices.includes(i)) ? 'flap-char flap-italic' : 'flap-char';
+        span.textContent = '\u00A0';
+        span.setAttribute('aria-hidden', 'true');
+        el.appendChild(span);
+        spans.push({ span, char: text[i] });
+      }
+
+      spans.forEach(({ span, char }, i) => {
+        if (char === ' ') {
+          setTimeout(() => { span.textContent = '\u00A0'; }, startDelay + i * CHAR_DELAY);
+          return;
+        }
+        let tick = 0;
+        setTimeout(() => {
+          const interval = setInterval(() => {
+            if (tick < FLAP_COUNT) {
+              span.textContent = chars[Math.floor(Math.random() * chars.length)];
+              tick++;
+            } else {
+              span.textContent = char;
+              clearInterval(interval);
+            }
+          }, FLAP_INTERVAL);
+        }, startDelay + i * CHAR_DELAY);
+      });
+    }
+
+    const line1NonSpace = lines[0].text.replace(/ /g, '').length;
+    animateLine('flap-line-1', lines[0].text, 0, []);
+    // "work " = 5 chars, "properly." = 9 chars — mark them italic
+    const italicIndices = [5,6,7,8,9,10,11,12,13];
+    animateLine('flap-line-2', lines[1].text, line1NonSpace * CHAR_DELAY + 80, italicIndices);
+
+    // Trigger hero-sub fade after everything settles
+    const sub = document.querySelector('.hero-sub');
+    if (sub) {
+      sub.style.animationDelay = (totalDuration / 1000).toFixed(2) + 's';
+    }
+  })();
 
   // ── Nav border on scroll ───────────────────
   window.addEventListener('scroll', () => {
